@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Metodo Frances</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Cronograma de pagos</h1>
+        <p>Método Frances</p> 
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-sm-4">
+                <form class="form-group" id="formFrances">
+                    <label for="" class="mr-sm-2">Valor Principal:</label>
+                    <input type="number" class="form-control mb-2 mr-sm-2" id="vp">
+                    <label for="" class="mr-sm-2">Tasa de interes:</label>
+                    <input type="number" class="form-control mb-2 mr-sm-2" id="ti">
+                    <label for="" class="mr-sm-2">Periodos:</label>
+                    <input type="number" class="form-control mb-2 mr-sm-2" id="periodo">
+                  </form>
+                  <button type="submit" class="btn btn-primary mb-2" onclick="capturarDatos(); genera_tabla()">Calcular</button>
+
+                  <div id="rpta"></div>
+                  <div id="cuotaConstante"></div>
+            </div>
+
+            <div class="col-sm-8 table-responsive-sm" id="tablaCrono">
+                    <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Saldo</th>
+                                    <th>Amortización</th>
+                                    <th>Interés</th>
+                                    <th>Cuota</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablita">
+                
+                            </tbody>
+                        </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

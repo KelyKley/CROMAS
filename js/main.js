@@ -1,33 +1,30 @@
 
 function submitCreateTable() {
-  const mainValue = parseInt($('#mainValue').val())
+  $('#tablita').empty()
+  const mainValue = parseFloat($('#mainValue').val())
   const interestRate = parseFloat($('#interestRate').val())
-  const periods = parseInt($('#periods').val())
+  const periods = parseFloat($('#periods').val())
 
-  let powVal = Math.pow((1 + interestRate), periods).toFixed(4)
-  let quota = (mainValue * (powVal * interestRate) / (powVal - 1)).toFixed(4)
-  console.log(quota)
-  console.log(powVal)
-  console.log(periods)
+  let powVal = Math.pow((1 + interestRate), periods)
+  let quota = (mainValue * (powVal * interestRate) / (powVal - 1))
 
-  let saldoInicial = mainValue
+  let beginningBalance = mainValue
 
-  let tableHTML = ''
   for (let i = 0; i < periods; i++) {
-    let interes = (saldoInicial * interestRate).toFixed(4)
-    let amortizacion = quota - interes
-    let saldoFinal = (saldoInicial - amortizacion).toFixed(4)
+    let interest = (beginningBalance * interestRate)
+    let amortization = (quota - interest)
+    let finalBalance = (beginningBalance - amortization)
     let tableHTML = `
     <tr>
     <td>${i + 1}</td>
-    <td>${saldoInicial}</td>
-    <td>${interes}</td>
-    <td>${amortizacion}</td>
-    <td>${quota}</td>
-    <td>${saldoFinal}</td>
+    <td>${beginningBalance.toFixed(3)}</td>
+    <td>${interest.toFixed(3)}</td>
+    <td>${amortization.toFixed(3)}</td>
+    <td>${quota.toFixed(3)}</td>
+    <td>${finalBalance.toFixed(3)}</td>
     </tr>`
 
-    saldoInicial = (saldoInicial - amortizacion).toFixed(4)
+    beginningBalance = (beginningBalance - amortization)
 
     $('#tablita').append(tableHTML)
   }

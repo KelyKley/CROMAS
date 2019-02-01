@@ -1,90 +1,50 @@
 
-            
-    function capturarDatos()
-    {
-        // obtenemos e valor por el numero de elemento
-        var porElementos=document.forms["formFrances"].elements[0].value;
-        // Obtenemos el valor por el id
-        var valorPrincipal=document.getElementById("vp").value;
-        // Obtenemos el valor por el Nombre
-        var tasaInteres=document.getElementById("ti").value;
-        // Obtenemos el valor por el tipo de tag
-        var periodo=document.getElementById("periodo").value;
- var uno=parseInt(1);
-        document.getElementById("rpta").innerHTML=" \
-            <br>Por VP: "+valorPrincipal+" \
-            <br>Por I: "+tasaInteres+" \
-            <br>Por N: "+periodo;
+function submitCreateTable() {
+  const mainValue = parseInt($('#mainValue').val())
+  const interestRate = parseFloat($('#interestRate').val())
+  const periods = parseInt($('#periods').val())
 
-        var operacionCuotaConstante= valorPrincipal*(((uno+tasaInteres)**periodo)*tasaInteres)/(((uno+tasaInteres)**periodo)-1);
-        document.getElementById("cuotaConstante").innerHTML=" \
-        <br>Cuota Constante: "+operacionCuotaConstante;
-        console.log(operacionCuotaConstante);
-        console.log((1+tasaInteres))
-        console.log(periodo + parseInt(1))
-        console.log((1+tasaInteres))
+  let powVal = Math.pow((1 + interestRate), periods).toFixed(4)
+  let quota = (mainValue * (powVal * interestRate) / (powVal - 1)).toFixed(4)
+  console.log(quota)
+  console.log(powVal)
+  console.log(periods)
 
+  let saldoInicial = mainValue
 
-    }
+  let tableHTML = ''
+  for (let i = 0; i < periods; i++) {
+    let interes = (saldoInicial * interestRate).toFixed(4)
+    let amortizacion = quota - interes
+    let saldoFinal = (saldoInicial - amortizacion).toFixed(4)
+    let tableHTML = `
+    <tr>
+    <td>${i + 1}</td>
+    <td>${saldoInicial}</td>
+    <td>${interes}</td>
+    <td>${amortizacion}</td>
+    <td>${quota}</td>
+    <td>${saldoFinal}</td>
+    </tr>`
 
-    function genera_tabla(){
-        var valorPrincipal=document.getElementById("vp").value;
-        // Obtenemos el valor por el Nombre
-        var tasaInteres=document.getElementById("ti").value;
-        // Obtenemos el valor por el tipo de tag
-        var periodo=document.getElementById("periodo").value;
+    saldoInicial = (saldoInicial - amortizacion).toFixed(4)
 
-        var fila="<tr><td>"+"00"+"</td><td>"+valorPrincipal+"</td><td>"+tasaInteres+"</td><td>"+periodo+"</td><td>"+"cuotaconstante"+"</td></tr>";
-    
-        var btn = document.createElement("TR");
-           btn.innerHTML=fila;
-        document.getElementById("tablita").appendChild(btn);
-    }
+    $('#tablita').append(tableHTML)
+  }
+
+}
 
 
+$("#btnSubmit").click(function (event) {
+  event.preventDefault()
+  event.stopPropagation()
+
+  // Fetch form to apply custom Bootstrap validation
+  var form = $("#myForm")
+  form.addClass('was-validated');
+
+  // Perform ajax submit here...
+  if (form[0].checkValidity()) submitCreateTable()
 
 
-
-
-
-    /*
-    function genera_tabla() {
-          // Obtener la referencia del elemento body
-          var body = document.getElementById("tablaCrono");
-         
-          // Crea un elemento <table> y un elemento <tbody>
-          var tabla   = document.createElement("table");
-          var tblBody = document.createElement("tbody");
-        //Numero de periodos
-          var periodo=document.getElementById("periodo").value;
-          // Crea las celdas
-          for (var i = 1; i <= periodo; i++) {
-            // Crea las hileras de la tabla
-            var hilera = document.createElement("tr");
-        //okok
-         var celda = document.createElement("td");
-              var textoCelda = document.createTextNode("celda "+i);
-              celda.appendChild(textoCelda);
-              hilera.appendChild(celda);
-///okok
-            for (var j = 0; j < 4; j++) {
-              // Crea un elemento <td> y un nodo de texto, haz que el nodo de
-              // texto sea el contenido de <td>, ubica el elemento <td> al final
-              // de la hilera de la tabla
-              var celda = document.createElement("td");
-              var textoCelda = document.createTextNode("casa "+i);
-              celda.appendChild(textoCelda);
-              hilera.appendChild(celda);
-            }
-         
-            // agrega la hilera al final de la tabla (al final del elemento tblbody)
-            tblBody.appendChild(hilera);
-          }
-         
-          // posiciona el <tbody> debajo del elemento <table>
-          tabla.appendChild(tblBody);
-          // appends <table> into <body>
-          body.appendChild(tabla);
-          // modifica el atributo "border" de la tabla y lo fija a "2";
-          tabla.setAttribute("border", "2");
-        }*/
+});

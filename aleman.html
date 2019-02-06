@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CROMAS</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h1>Cronograma de pagos</h1>
+    <p>Método Aleman</p>
+  </div>
+  <div class="container text-center">
+
+    <form class="container" novalidate="" id="myForm">
+      <div class="form-row align-items-center">
+        <div class="form-group col-auto">
+          <label class="form-control-label" for="mainValue">Valor Principal (VP)</label>
+          <input type="number" step="1" min="1" class="form-control" name="i1" id="mainValue" required>
+          <!-- <div class="valid-feedback">Success! You've done it.</div> -->
+          <div class="invalid-feedback">numero entero requerido </div>
+        </div>
+        <div class="form-group col-auto">
+          <label class="form-control-label" for="interestRate">Tasa de Interes</label>
+          <input type="number" step="0.01" min="0.01" class="form-control" name="i2" required id="interestRate">
+          <!-- <div class="valid-feedback">Nice! You got this one!</div> -->
+          <div class="invalid-feedback">numero entero requerido </div>
+        </div>
+        <div class="form-group col-auto">
+          <label class="form-control-label" for="periods">Periodos</label>
+          <input type="number" step="1" class="form-control" min="1" name="i2" required id="periods">
+          <!-- <div class="valid-feedback">Nice! You got this one!</div> -->
+          <div class="invalid-feedback">numero entero requerido </div>
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-secondary" id="btnSubmitAleman">Calcular</button>
+        </div>
+      </div>
+    </form>
+
+
+    <div class="table-responsive-sm" id="tablaCrono">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Saldo Ini</th>
+            <th>Interés</th>
+            <th>Amortización</th>
+            <th>Cuota</th>
+            <th>Saldo Fin.</th>
+          </tr>
+        </thead>
+        <tbody id="tablitaAlmn"></tbody>
+
+      </table>
+    </div>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

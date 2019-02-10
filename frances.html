@@ -27,26 +27,38 @@
 
     <form class="container" novalidate="" id="myForm">
       <div class="form-row align-items-center">
-        <div class="form-group col-auto">
-          <label class="form-control-label" for="mainValue">Valor Principal (VP)</label>
+        <div class="form-group col-sm-12 col-md-3">
+          <label class="form-control-label font-weight-bold" for="mainValue">Valor Principal (VP)</label>
           <input type="number" step="1" min="1" class="form-control" name="i1" id="mainValue" required>
           <!-- <div class="valid-feedback">Success! You've done it.</div> -->
-          <div class="invalid-feedback">numero entero requerido </div>
+          <div class="invalid-feedback">Número entero requerido </div>
         </div>
-        <div class="form-group col-auto">
-          <label class="form-control-label" for="interestRate">Tasa de Interes</label>
+        <div class="form-group col-sm-12 col-md-3">
+          <label class="form-control-label font-weight-bold" for="interestRate">Tasa de Interes</label>
           <input type="number" step="0.01" min="0.01" class="form-control" name="i2" required id="interestRate">
           <!-- <div class="valid-feedback">Nice! You got this one!</div> -->
-          <div class="invalid-feedback">numero porcentual requerido (%) </div>
+          <div class="invalid-feedback">Número porcentual requerido (%) </div>
         </div>
-        <div class="form-group col-auto">
-          <label class="form-control-label" for="periods">Periodos</label>
+
+        <!--div class="form-group col-sm-12 col-md-2">
+          <label for="exampleFormControlSelect1">Example select</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div-->
+
+        <div class="form-group col-sm-12 col-md-3">
+          <label class="form-control-label font-weight-bold" for="periods">Periodos</label>
           <input type="number" step="1" class="form-control" min="1" name="i2" required id="periods">
           <!-- <div class="valid-feedback">Nice! You got this one!</div> -->
-          <div class="invalid-feedback">numero entero requerido </div>
+          <div class="invalid-feedback">Número entero requerido </div>
         </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-secondary" id="btnSubmit">Calcular</button>
+        <div class="col-sm-12 col-md-3">
+          <button type="submit" class="btn btn-primary btn-block font-weight-bold" id="btnSubmit">Calcular</button>
         </div>
       </div>
     </form>
@@ -57,11 +69,10 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Saldo Ini</th>
-            <th>Interés</th>
+            <th>Saldo</th>
             <th>Amortización</th>
+            <th>Interés</th>
             <th>Cuota</th>
-            <th>Saldo Fin.</th>
           </tr>
         </thead>
         <tbody id="tablita"></tbody>

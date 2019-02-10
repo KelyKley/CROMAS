@@ -13,15 +13,14 @@ function submitCreateTable() {
   for (let i = 0; i < periods; i++) {
     let interest = (beginningBalance * (interestRate)/100)
     let amortization = (quota - interest)
-    let finalBalance = (beginningBalance - amortization)
+   /* let finalBalance = (beginningBalance - amortization)*/
     let tableHTML = `
     <tr>
     <td>${i + 1}</td>
     <td>${beginningBalance.toFixed(3)}</td>
-    <td>${interest.toFixed(3)}</td>
     <td>${amortization.toFixed(3)}</td>
+    <td>${interest.toFixed(3)}</td>
     <td>${quota.toFixed(3)}</td>
-    <td>${finalBalance.toFixed(3)}</td>
     </tr>`
 
     beginningBalance = (beginningBalance - amortization)
@@ -66,15 +65,14 @@ function submitCreateTableAlmn() {
     
     let interest = (beginningBalance * (interestRate)/100)
     let quota= (amortization + interest)
-    let finalBalance = (beginningBalance - amortization)
+    /*let finalBalance = (beginningBalance - amortization)*/
     let tableHTML = `
     <tr>
     <td>${i + 1}</td>
     <td>${beginningBalance.toFixed(3)}</td>
-    <td>${interest.toFixed(3)}</td>
     <td>${amortization.toFixed(3)}</td>
+    <td>${interest.toFixed(3)}</td>
     <td>${quota.toFixed(3)}</td>
-    <td>${finalBalance.toFixed(3)}</td>
     </tr>`
 
     beginningBalance = (beginningBalance - amortization)

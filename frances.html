@@ -21,21 +21,21 @@
 <body>
   <div class="jumbotron text-center">
     <h1>Cronograma de pagos</h1>
-    <p>Método Frances</p>
+    <h5>Método Frances</h5>
   </div>
   <div class="container text-center">
 
     <form class="container" novalidate="" id="myForm">
       <div class="form-row align-items-center">
         <div class="form-group col-sm-12 col-md-3">
-          <label class="form-control-label font-weight-bold" for="mainValue">Valor Principal (VP)</label>
+          <label class="form-control-label font-weight-bold" for="mainValue">Valor Principal (VP):</label>
           <input type="number" step="1" min="1" class="form-control" name="i1" id="mainValue" required>
           <!-- <div class="valid-feedback">Success! You've done it.</div> -->
           <div class="invalid-feedback">Número entero requerido </div>
         </div>
         <div class="form-group col-sm-12 col-md-3">
-          <label class="form-control-label font-weight-bold" for="interestRate">Tasa de Interes</label>
-          <input type="number" step="0.01" min="0.01" class="form-control" name="i2" required id="interestRate">
+          <label class="form-control-label font-weight-bold" for="interestRate">Tasa de Interes (I):</label>
+          <input type="number" step="0.01" min="0.01" class="form-control" placeholder="%" name="i2" required id="interestRate">
           <!-- <div class="valid-feedback">Nice! You got this one!</div> -->
           <div class="invalid-feedback">Número porcentual requerido (%) </div>
         </div>
@@ -52,7 +52,7 @@
         </div-->
 
         <div class="form-group col-sm-12 col-md-3">
-          <label class="form-control-label font-weight-bold" for="periods">Periodos</label>
+          <label class="form-control-label font-weight-bold" for="periods">Periodos (N):</label>
           <input type="number" step="1" class="form-control" min="1" name="i2" required id="periods">
           <!-- <div class="valid-feedback">Nice! You got this one!</div> -->
           <div class="invalid-feedback">Número entero requerido </div>

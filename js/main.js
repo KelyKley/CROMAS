@@ -37,8 +37,8 @@ function submitCreateTable() {
   }
 
   let totalHTML = `
-    <tr>
-    <td colspan="2" >Total: </td>
+    <tr class="font-weight-bold">
+    <td colspan="2" >TOTAL: </td>
     <td>${totalAmortization.toFixed(3)}</td>
     <td>${totalInterest.toFixed(3)}</td>
     <td>${totalQuota.toFixed(3)}</td>
@@ -76,6 +76,9 @@ function submitCreateTableAlmn() {
   const periods = parseFloat($('#periods').val())
 
   let amortization = (mainValue / periods)
+  let totalAmortization = 0
+  let totalInterest = 0
+  let totalQuota = 0
 
   let beginningBalance = mainValue
 
@@ -95,8 +98,22 @@ function submitCreateTableAlmn() {
 
     beginningBalance = (beginningBalance - amortization)
 
+    totalAmortization += amortization
+    totalInterest += interest
+    totalQuota += quota
+
     $('#tablitaAlmn').append(tableHTML)
   }
+
+  let totalHTML = `
+    <tr class="font-weight-bold">
+    <td colspan="2" >TOTAL: </td>
+    <td>${totalAmortization.toFixed(3)}</td>
+    <td>${totalInterest.toFixed(3)}</td>
+    <td>${totalQuota.toFixed(3)}</td>
+    </tr>`
+
+    $('#tablitaAlmn').append(totalHTML)
 
 }
 

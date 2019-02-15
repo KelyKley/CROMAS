@@ -4,7 +4,8 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 .imagenInicio{
-    width: 80%;
+    width: 70%;
+    margin-bottom: 2em;
 }
 
 .jumbotron {
@@ -27,4 +28,16 @@ body{
 
 .kmargin-botton{
     margin-bottom: 2em;
+}
+
+.expositores{
+    background-color: #3fa59d;
+    padding: 1em;
+    color: #fff;
+    bottom: 0;
+}
+
+.imagenBanderas{
+    width: 40%;
+    margin: 1em;
 }
